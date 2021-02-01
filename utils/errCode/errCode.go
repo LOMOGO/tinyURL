@@ -6,9 +6,10 @@ import (
 )
 
 type Error struct {
-	Code int         `json:"code"`
-	Msg  string      `json:"msg"`
-	Data interface{} `json:"data"`
+	Code    int         `json:"code"`
+	Msg     string      `json:"msg"`
+	Details interface{} `json:"details"`
+	Data    interface{} `json:"data"`
 }
 
 var codes = map[int]string{}
@@ -19,10 +20,23 @@ func newError(code int, msg string) *Error {
 	}
 	codes[code] = msg
 	return &Error{
-		Code: code,
-		Msg:  msg,
-		Data: nil,
+		Code:    code,
+		Msg:     msg,
+		Details: nil,
+		Data:    nil,
 	}
+}
+
+func (e Error) WithDetails(details interface{}) Error {
+	newE := e
+	newE.Details = details
+	return newE
+}
+
+func (e Error) WithData(data interface{}) Error {
+	newE := e
+	newE.Data = data
+	return newE
 }
 
 func (e *Error) StatusCode() int {
@@ -35,8 +49,8 @@ func (e *Error) StatusCode() int {
 		return http.StatusInternalServerError
 	case NotFound.Code:
 		return http.StatusNotFound
-	case BindError.Code:
-		return http.StatusInternalServerError
+	case InvalidParams.Code:
+		return http.StatusBadRequest
 	case GenderURLError.Code:
 		return http.StatusInternalServerError
 	}

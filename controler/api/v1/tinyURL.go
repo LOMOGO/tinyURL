@@ -2,29 +2,29 @@ package v1
 
 import (
 	"github.com/gin-gonic/gin"
-	"log"
 	"tinyURL/global"
 	"tinyURL/model"
 	"tinyURL/model/dao"
+	"tinyURL/utils"
 	"tinyURL/utils/errCode"
 )
 
 func Long2ShortURL(c *gin.Context) {
-	var url *model.URLInfo
+	var url model.URLInfo
+	var msg map[string]string
 	err := c.BindJSON(&url)
-	if err != nil {
-		log.Println("post参数绑定错误:", err)
-		c.JSON(errCode.BindError.StatusCode(), errCode.BindError)
+	ok, msg := utils.Valid(err)
+	if !ok {
+		c.JSON(errCode.InvalidParams.StatusCode(), errCode.InvalidParams.WithDetails(msg))
 		return
 	}
-	urlCode, err := dao.GenderURLCode(url)
+
+	urlCode, err := dao.GenderURLCode(&url)
 	if err != nil {
 		c.JSON(errCode.GenderURLError.StatusCode(), errCode.GenderURLError)
 		return
 	}
-	success := errCode.Success
-	success.Data = "http://" + global.AppConf.URL + global.AppConf.Port + "/" + urlCode
-	c.JSON(errCode.Success.StatusCode(), success)
+	c.JSON(errCode.Success.StatusCode(), errCode.Success.WithData("http://"+global.AppConf.URL+global.AppConf.Port+"/"+urlCode))
 }
 
 func RedirectURL(c *gin.Context) {
