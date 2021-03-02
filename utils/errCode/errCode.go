@@ -1,6 +1,7 @@
 package errCode
 
 import (
+	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
 )
@@ -27,13 +28,17 @@ func newError(code int, msg string) *Error {
 	}
 }
 
-func (e Error) WithDetails(details interface{}) Error {
+func (e *Error) ResponseJson(c *gin.Context) {
+	c.JSON(e.StatusCode(), e)
+}
+
+func (e *Error) WithDetails(details interface{}) *Error {
 	newE := e
 	newE.Details = details
 	return newE
 }
 
-func (e Error) WithData(data interface{}) Error {
+func (e *Error) WithData(data interface{}) *Error {
 	newE := e
 	newE.Data = data
 	return newE

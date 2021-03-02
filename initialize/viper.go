@@ -21,4 +21,7 @@ func Config() {
 	if err = viper.UnmarshalKey("app", &global.AppConf); err != nil {
 		log.Println("app配置读取失败：", err)
 	}
+	if err = viper.UnmarshalKey("zap", &global.ZapConf); err != nil {
+		log.Println("zap配置读取失败：", err)
+	}
 }

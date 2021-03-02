@@ -2,13 +2,16 @@ package global
 
 import (
 	"github.com/gin-gonic/gin"
+	"go.uber.org/zap"
 	"gorm.io/gorm"
-	"tinyURL/model"
+	"tinyURL/config"
 )
 
 var (
 	ROUTER       *gin.Engine
-	DataBaseConf model.Database
-	AppConf      model.App
+	DataBaseConf config.Database
+	AppConf      config.App
+	ZapConf      config.Zap
 	DB           *gorm.DB
+	Logger       *zap.Logger
 )

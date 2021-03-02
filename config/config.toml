@@ -10,3 +10,11 @@ port = 3306
 dbname = "db_short_link"
 maxopenconn = 40
 maxidleconn = 25
+
+[zap]
+filename = "log/tinyURL.log"
+maxsize = 10
+maxbackups = 5
+maxage = 30
+compress = false
+level = "debug"

@@ -1,4 +1,4 @@
-package model
+package config
 
 type Database struct {
 	User        string `mapstructure:"user"`
@@ -13,4 +13,13 @@ type Database struct {
 type App struct {
 	URL  string `mapstructure:"url"`
 	Port string `mapstructure:"port"`
+}
+
+type Zap struct {
+	Filename   string `mapstructure:"filename"`
+	MaxSize    int    `mapstructure:"maxsize"`
+	MaxBackups int    `mapstructure:"maxbackups"`
+	MaxAge     int    `mapstructure:"maxage"`
+	Compress   bool   `mapstructure:"compress"`
+	Level      string `mapstructure:"debug"`
 }

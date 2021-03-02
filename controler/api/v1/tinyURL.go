@@ -2,6 +2,7 @@ package v1
 
 import (
 	"github.com/gin-gonic/gin"
+	"go.uber.org/zap"
 	"tinyURL/global"
 	"tinyURL/model"
 	"tinyURL/model/dao"
@@ -15,16 +16,19 @@ func Long2ShortURL(c *gin.Context) {
 	err := c.BindJSON(&url)
 	ok, msg := utils.Valid(err)
 	if !ok {
-		c.JSON(errCode.InvalidParams.StatusCode(), errCode.InvalidParams.WithDetails(msg))
+		errCode.InvalidParams.WithDetails(msg).ResponseJson(c)
+		global.Logger.Warn("入参错误", zap.Error(err))
 		return
 	}
 
 	urlCode, err := dao.GenderURLCode(&url)
 	if err != nil {
-		c.JSON(errCode.GenderURLError.StatusCode(), errCode.GenderURLError)
+		errCode.GenderURLError.ResponseJson(c)
+		global.Logger.Error("短链生成失败", zap.Error(err))
 		return
 	}
-	c.JSON(errCode.Success.StatusCode(), errCode.Success.WithData("http://"+global.AppConf.URL+global.AppConf.Port+"/"+urlCode))
+	errCode.Success.WithData("http://" + global.AppConf.URL + global.AppConf.Port + "/" + urlCode).ResponseJson(c)
+	global.Logger.Info("短链生成成功", zap.String("短链：", urlCode))
 }
 
 func RedirectURL(c *gin.Context) {
@@ -33,8 +37,10 @@ func RedirectURL(c *gin.Context) {
 	url.URLCode = code
 	err := dao.SelectByCode(&url)
 	if err != nil {
-		c.JSON(errCode.NotFound.StatusCode(), errCode.NotFound)
+		errCode.NotFound.ResponseJson(c)
+		global.Logger.Warn("未找到短链对应的网址", zap.Error(err))
 		return
 	}
 	c.Redirect(302, url.URL)
+	global.Logger.Info("网页跳转成功", zap.String("短链", code), zap.String("跳转的网址：", url.URL))
 }

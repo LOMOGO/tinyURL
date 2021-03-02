@@ -14,6 +14,7 @@ var aboutMe = `
 
 func main() {
 	initialize.Config()
+	initialize.Logger()
 	initialize.DataBase()
 	initialize.Routers()
 	fmt.Println(aboutMe)
