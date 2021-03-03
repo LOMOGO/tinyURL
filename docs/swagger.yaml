@@ -1,0 +1,42 @@
+basePath: /api/v1
+definitions:
+  request.URLInfo:
+    properties:
+      url:
+        type: string
+    type: object
+host: 127.0.0.1:8080
+info:
+  contact:
+    email: dhdpat@163.com
+    name: lomogo
+  description: 该服务用以生成短链接
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: 短链接服务接口文档
+  version: 0.0.1
+paths:
+  /link:
+    post:
+      consumes:
+      - application/json
+      description: 将用户传入的网址转换为短链接
+      parameters:
+      - description: 需要转换的网址
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.URLInfo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code": "0", "msg": "成功", "details": "", data:"转换后的短链"}'
+          schema:
+            type: string
+      summary: 生成短链
+      tags:
+      - 短链
+swagger: "2.0"

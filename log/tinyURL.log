@@ -1,3 +1,5 @@
-{"level":"\u001b[33mWARN\u001b[0m","time":"2021-03-02T10:32:02.842+0800","caller":"v1/tinyURL.go:41","msg":"未找到短链对应的网址","error":"record not found"}
-{"level":"WARN","time":"2021-03-02T10:35:56.878+0800","caller":"v1/tinyURL.go:41","msg":"未找到短链对应的网址","error":"record not found"}
-{"level":"INFO","time":"2021-03-02T10:36:09.922+0800","caller":"v1/tinyURL.go:45","msg":"网页跳转成功","短链":"1","跳转的网址：":"https://music.163.com/"}
+{"level":"INFO","time":"2021-03-02T16:16:25.882+0800","caller":"v1/tinyURL.go:45","msg":"网页跳转成功","短链":"1","跳转的网址：":"https://music.163.com/"}
+{"level":"INFO","time":"2021-03-03T15:02:23.610+0800","caller":"v1/tinyURL.go:39","msg":"短链生成成功","短链：":"n"}
+{"level":"INFO","time":"2021-03-03T15:09:30.720+0800","caller":"v1/tinyURL.go:39","msg":"短链生成成功","短链：":"o"}
+{"level":"INFO","time":"2021-03-03T15:12:16.560+0800","caller":"v1/tinyURL.go:39","msg":"短链生成成功","短链：":"p"}
+{"level":"INFO","time":"2021-03-03T16:00:26.849+0800","caller":"v1/tinyURL.go:46","msg":"短链生成成功","短链：":"q"}

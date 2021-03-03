@@ -3,17 +3,27 @@ package v1
 import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
+	"gorm.io/gorm"
 	"tinyURL/global"
 	"tinyURL/model"
 	"tinyURL/model/dao"
+	"tinyURL/model/request"
 	"tinyURL/utils"
 	"tinyURL/utils/errCode"
 )
 
+// @Summary 生成短链
+// @Description 将用户传入的网址转换为短链接
+// @Tags 短链
+// @Accept json
+// @Produce json
+// @Param data body request.URLInfo true "需要转换的网址"
+// @Success 200 {string} json "{"code": "0", "msg": "成功", "details": "", data:"转换后的短链"}"
+// @Router /link [post]
 func Long2ShortURL(c *gin.Context) {
-	var url model.URLInfo
+	var u request.URLInfo
 	var msg map[string]string
-	err := c.BindJSON(&url)
+	err := c.BindJSON(&u)
 	ok, msg := utils.Valid(err)
 	if !ok {
 		errCode.InvalidParams.WithDetails(msg).ResponseJson(c)
@@ -21,6 +31,11 @@ func Long2ShortURL(c *gin.Context) {
 		return
 	}
 
+	url := model.URLInfo{
+		Model:   gorm.Model{},
+		URL:     u.URL,
+		URLCode: "",
+	}
 	urlCode, err := dao.GenderURLCode(&url)
 	if err != nil {
 		errCode.GenderURLError.ResponseJson(c)
