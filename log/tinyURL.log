@@ -3,3 +3,4 @@
 {"level":"INFO","time":"2021-03-03T15:09:30.720+0800","caller":"v1/tinyURL.go:39","msg":"短链生成成功","短链：":"o"}
 {"level":"INFO","time":"2021-03-03T15:12:16.560+0800","caller":"v1/tinyURL.go:39","msg":"短链生成成功","短链：":"p"}
 {"level":"INFO","time":"2021-03-03T16:00:26.849+0800","caller":"v1/tinyURL.go:46","msg":"短链生成成功","短链：":"q"}
+{"level":"INFO","time":"2021-03-04T16:05:51.533+0800","caller":"v1/tinyURL.go:60","msg":"网页跳转成功","短链":"1","跳转的网址：":"https://music.163.com/"}
