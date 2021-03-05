@@ -1,0 +1,23 @@
+version: "3"
+services:
+  mysql55:
+    image: "mysql:5.5"
+#    这里需要将及
+    container_name: "mysql55"
+    ports:
+    - "13306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "Syq"
+      MYSQL_DATABASE: "db_tiny_link"
+    volumes:
+    - /home/lomogo/docker/project/tinyurl/mysql:/var/lib/mysql
+  tinyurl:
+#    根据当前目录的Dockerfile文件生成镜像
+    build: .
+    volumes:
+    - /home/lomogo/docker/project/tinyurl/log:/log
+    depends_on:
+      - mysql55
+    ports:
+    - "8080:8080"
+    command: "./tinyURL"

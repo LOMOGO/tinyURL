@@ -7,7 +7,7 @@ user = "root"
 password = "Syq"
 host = "mysql55"
 port = 3306
-dbname = "db_short_link"
+dbname = "db_tiny_link"
 maxopenconn = 40
 maxidleconn = 25
 
