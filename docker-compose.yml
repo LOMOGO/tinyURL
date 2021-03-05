@@ -2,18 +2,22 @@ version: "3"
 services:
   mysql55:
     image: "mysql:5.5"
-#    这里需要将及
+#    这里需要将运行的时候的容器名改为mysql55，否则go中的config文件配置中的mysql的host项将无法与mysql建立连接
     container_name: "mysql55"
     ports:
     - "13306:3306"
     environment:
+#      这个是必填的项目
       MYSQL_ROOT_PASSWORD: "Syq"
+#      这个是选填的项目，如果填上，容器在启动的时候将会创建该数据库
       MYSQL_DATABASE: "db_tiny_link"
+#      创建数据卷，用于保存容器写的数据
     volumes:
     - /home/lomogo/docker/project/tinyurl/mysql:/var/lib/mysql
   tinyurl:
 #    根据当前目录的Dockerfile文件生成镜像
     build: .
+#    创建tinyurl的归档日志数据卷
     volumes:
     - /home/lomogo/docker/project/tinyurl/log:/log
     depends_on:
