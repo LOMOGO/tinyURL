@@ -15,10 +15,10 @@ $ docker run --name mysql55 -p 13306:3306 -e MYSQL_ROOT_PASSWORD=Syq -e MYSQL_DA
 $ docker run --link=mysql8019:mysql8019 -p 8080:8080 tinyurl
 因为本项目依赖mysql，并且mysql需要先于tinyurl项目运行，所以项目跑起来需要分三步走：
 第一条命令的意思是：通过Dockerfile.link文件构建镜像
-第二条命令意为通过mysql:5.5镜像运行mysql55容器，并且指定了root密码是Syq,并新建了数据库db_tiny_link
+第二条命令意为通过mysql:5.5镜像运行mysql55容器，并且指定了root密码是Syq,并新建了数据库db_tiny_url
 第三条命令的含义是：在运行tinyurl容器的时候使用--link的方式与上面的mysql8019容器关联起来。
 
-如果不依赖docker运行本项目，而仅仅是独立运行的话，需要将/config/config.toml中 mysql配置中的host项改为:127.0.0.1。并且需要提前建立数据库:db_tiny_link
+如果不依赖docker运行本项目，而仅仅是独立运行的话，需要将/config/config.toml中 mysql配置中的host项改为:127.0.0.1。并且需要提前建立数据库:db_tiny_url
 ```
 
 
