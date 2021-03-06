@@ -2,7 +2,6 @@ version: "3"
 services:
   mysql55:
     image: "mysql:5.5"
-#    这里需要将运行的时候的容器名改为mysql55，否则go中的config文件配置中的mysql的host项将无法与mysql建立连接
     container_name: "mysql55"
     ports:
     - "13306:3306"
@@ -20,8 +19,9 @@ services:
 #    创建tinyurl的归档日志数据卷
     volumes:
     - /home/lomogo/docker/project/tinyurl/log:/log
+    container_name: "tinyurl"
     depends_on:
       - mysql55
     ports:
     - "8080:8080"
-    command: "./tinyURL"
+    command: bash -c "./wait-for.sh mysql55:3306 -- ./tinyURL"
