@@ -9,7 +9,7 @@ services:
 #      这个是必填的项目
       MYSQL_ROOT_PASSWORD: "Syq"
 #      这个是选填的项目，如果填上，容器在启动的时候将会创建该数据库
-      MYSQL_DATABASE: "db_tiny_link"
+      MYSQL_DATABASE: "db_tiny_url"
 #      创建数据卷，用于保存容器写的数据
     volumes:
     - /home/lomogo/docker/project/tinyurl/mysql:/var/lib/mysql
@@ -20,6 +20,7 @@ services:
     volumes:
     - /home/lomogo/docker/project/tinyurl/log:/log
     container_name: "tinyurl"
+#    depends_on会定义启动顺序，但是并不是说第一个容器完全启动之后才再启动下一个容器。因此下面需要利用wait-for.sh脚本来确保mysql服务启动之后再启动应用。
     depends_on:
       - mysql55
     ports:

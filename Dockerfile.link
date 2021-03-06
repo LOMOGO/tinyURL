@@ -1,0 +1,32 @@
+FROM golang:alpine AS builder
+
+ENV GO111MODULE=on \
+    CGO_ENABLED=0 \
+    GOOS=linux \
+    GOARCH=amd64 \
+    GOPROXY=https://goproxy.cn,direct
+
+WORKDIR /build
+
+#下载项目导入库的依赖文件
+COPY go.mod .
+COPY go.sum .
+RUN go mod download
+
+#将代码复制到容器中
+COPY . .
+
+RUN go build -o tinyURL .
+
+#由于我们只需要构建好后的二进制文件即可，因此这里再构建一个空镜像，用以减少镜像体积
+FROM scratch
+
+COPY ./config /config
+COPY ./log /log
+COPY ./docs /docs
+
+COPY --from=builder /build/tinyURL /
+
+
+#因为要在mysql服务启动后再启动web服务，因此将该命令注释，改为在docker-compose.yml文件中执行
+ENTRYPOINT ["/tinyURL"]

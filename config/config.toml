@@ -5,9 +5,10 @@ port = ":8080"
 [mysql]
 user = "root"
 password = "Syq"
+#host = "127.0.0.1"
 host = "mysql55"
 port = 3306
-dbname = "db_tiny_link"
+dbname = "db_tiny_url"
 maxopenconn = 40
 maxidleconn = 25
 
