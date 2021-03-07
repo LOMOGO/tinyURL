@@ -32,7 +32,7 @@ var doc = `{
     "paths": {
         "/link": {
             "post": {
-                "description": "将用户传入的网址转换为短链接",
+                "description": "将用户传入的网址转换为短链接, 链接必须以：http://或https://开头",
                 "consumes": [
                     "application/json"
                 ],
@@ -66,7 +66,7 @@ var doc = `{
         },
         "/qrcode": {
             "post": {
-                "description": "将用户传入的网址转换为二维码",
+                "description": "将用户传入的网址转换为二维码，链接必须以：http://或https://开头",
                 "consumes": [
                     "application/json"
                 ],

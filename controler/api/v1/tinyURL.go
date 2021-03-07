@@ -14,7 +14,7 @@ import (
 )
 
 // @Summary 生成短链
-// @Description 将用户传入的网址转换为短链接
+// @Description 将用户传入的网址转换为短链接, 链接必须以：http://或https://开头
 // @Tags 短链
 // @Accept json
 // @Produce json
@@ -48,7 +48,7 @@ func Long2ShortURL(c *gin.Context) {
 }
 
 // @Summary 生成二维码
-// @Description 将用户传入的网址转换为二维码
+// @Description 将用户传入的网址转换为二维码，链接必须以：http://或https://开头
 // @Tags 二维码
 // @Accept json
 // @Produce json
