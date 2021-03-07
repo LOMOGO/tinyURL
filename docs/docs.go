@@ -19,8 +19,7 @@ var doc = `{
         "description": "{{.Description}}",
         "title": "{{.Title}}",
         "contact": {
-            "name": "lomogo",
-            "email": "dhdpat@163.com"
+            "name": "lomogo"
         },
         "license": {
             "name": "Apache 2.0",
@@ -58,6 +57,40 @@ var doc = `{
                 "responses": {
                     "200": {
                         "description": "{\"code\": \"0\", \"msg\": \"成功\", \"details\": \"\", data:\"转换后的短链\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/qrcode": {
+            "post": {
+                "description": "将用户传入的网址转换为二维码",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "二维码"
+                ],
+                "summary": "生成二维码",
+                "parameters": [
+                    {
+                        "description": "需要转换的网址",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.URLInfo"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{\"code\": \"0\", \"msg\": \"成功\", \"details\": \"\", data:\"转换后的二维码地址\"}",
                         "schema": {
                             "type": "string"
                         }

@@ -24,4 +24,8 @@ func Config() {
 	if err = viper.UnmarshalKey("zap", &global.ZapConf); err != nil {
 		log.Println("zap配置读取失败：", err)
 	}
+
+	if err = viper.UnmarshalKey("qrcode", &global.QRCodeConf); err != nil {
+		log.Println("qrcode配置失败", err)
+	}
 }

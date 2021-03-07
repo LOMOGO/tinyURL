@@ -7,8 +7,9 @@ var (
 	//第4 5位错误码代表所处模块的具体错误
 
 	//系统错误前缀为100
-	ServerError    = newError(10001, "服务器内部错误")
-	GenderURLError = newError(10003, "短链生成失败")
+	ServerError       = newError(10001, "服务器内部错误")
+	GenderURLError    = newError(10002, "短链生成失败")
+	GenderQRCodeError = newError(10003, "二维码生成失败")
 
 	//数据库错误的前缀为201
 	DatabaseError = newError(20101, "数据库连接错误")

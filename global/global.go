@@ -12,6 +12,7 @@ var (
 	DataBaseConf config.Database
 	AppConf      config.App
 	ZapConf      config.Zap
+	QRCodeConf   config.QRCode
 	DB           *gorm.DB
 	Logger       *zap.Logger
 )

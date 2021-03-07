@@ -23,3 +23,8 @@ type Zap struct {
 	Compress   bool   `mapstructure:"compress"`
 	Level      string `mapstructure:"debug"`
 }
+
+type QRCode struct {
+	ImgHeight int    `mapstructure:"imgheight"`
+	FilePath  string `mapstructure:"filepath"`
+}

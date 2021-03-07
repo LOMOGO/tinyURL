@@ -11,6 +11,8 @@ var aboutMe = `
 ┌┬┐┬┌┐┌┬ ┬╦ ╦╦═╗╦  
  │ ││││└┬┘║ ║╠╦╝║  
  ┴ ┴┘└┘ ┴ ╚═╝╩╚═╩═╝
+该服务用于生成短链接
+作者：lomogo
 `
 
 // @title 短链接服务接口文档
@@ -18,7 +20,6 @@ var aboutMe = `
 // @description 该服务用以生成短链接
 
 // @contact.name lomogo
-// @contact.email dhdpat@163.com
 
 // @license.name Apache 2.0
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html

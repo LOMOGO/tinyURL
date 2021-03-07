@@ -8,3 +8,15 @@
 {"level":"FATAL","time":"2021-03-06T14:37:34.561+0800","caller":"initialize/gorm.go:24","msg":"未连接到数据库","error":"Error 1049: Unknown database 'db_tiny_link'"}
 {"level":"FATAL","time":"2021-03-06T14:37:44.472+0800","caller":"initialize/gorm.go:24","msg":"未连接到数据库","error":"dial tcp: lookup 127.0.0.1:3306:3306: no such host"}
 {"level":"FATAL","time":"2021-03-06T14:38:02.678+0800","caller":"initialize/gorm.go:24","msg":"未连接到数据库","error":"Error 1049: Unknown database 'db_tiny_link'"}
+{"level":"FATAL","time":"2021-03-06T14:48:22.016+0800","caller":"initialize/gorm.go:24","msg":"未连接到数据库","error":"dial tcp: lookup mysql55: no such host"}
+{"level":"INFO","time":"2021-03-07T09:12:37.505+0800","caller":"v1/tinyURL.go:46","msg":"短链生成成功","短链：":"1"}
+{"level":"INFO","time":"2021-03-07T09:13:24.229+0800","caller":"v1/tinyURL.go:60","msg":"网页跳转成功","短链":"1","跳转的网址：":"https://music.163.com"}
+{"level":"INFO","time":"2021-03-07T11:17:37.315+0800","caller":"v1/tinyURL.go:67","msg":"二维码生成成功","图片路径":"img/qrcode8d9179a7c3eb8cf85d4e791abf41605f9c959739.png"}
+{"level":"INFO","time":"2021-03-07T11:18:54.079+0800","caller":"v1/tinyURL.go:67","msg":"二维码生成成功","图片路径":"img/qrcode/b430a72d0c9a0766dadca98fa92673b5d5d6cd78.png"}
+{"level":"INFO","time":"2021-03-07T11:23:08.962+0800","caller":"v1/tinyURL.go:67","msg":"二维码生成成功","图片路径":"img/qrcode/c998fefeaf3fd178f4a76169c7987155eb5b5eab.png"}
+{"level":"INFO","time":"2021-03-07T11:59:37.482+0800","caller":"v1/tinyURL.go:67","msg":"二维码生成成功","图片名":"4e86eba61177d068ce823c4d0da35762b1dbc539.png"}
+{"level":"INFO","time":"2021-03-07T12:01:33.341+0800","caller":"v1/tinyURL.go:67","msg":"二维码生成成功","图片名":"ee0c17d39d7de0f0a10255a36a8c1bfa7d9065ba.png"}
+{"level":"INFO","time":"2021-03-07T12:09:11.734+0800","caller":"v1/tinyURL.go:75","msg":"二维码生成成功","图片名":"180ef5e95677d9f29c2727ea40a4b7fbc8ace062.png"}
+{"level":"INFO","time":"2021-03-07T12:10:03.702+0800","caller":"v1/tinyURL.go:75","msg":"二维码生成成功","图片名":"7a1ce8c6f0e22e5445e1521b8b7a7b73f9fc10e8.png"}
+{"level":"INFO","time":"2021-03-07T12:10:56.585+0800","caller":"v1/tinyURL.go:75","msg":"二维码生成成功","图片名":"fd81149587a1fd336ccc6404451923bc6400b031.png"}
+{"level":"INFO","time":"2021-03-07T12:11:13.963+0800","caller":"v1/tinyURL.go:75","msg":"二维码生成成功","图片名":"3c69a5b07ac4ec011280d2ddf6c47fabedc5a124.png"}
