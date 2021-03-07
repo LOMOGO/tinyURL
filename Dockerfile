@@ -23,6 +23,7 @@ RUN go build -o tinyURL .
 FROM alpine
 
 COPY ./wait-for.sh /
+COPY ./data /data
 COPY ./config /config
 COPY ./log /log
 COPY ./docs /docs

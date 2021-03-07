@@ -21,6 +21,7 @@ RUN go build -o tinyURL .
 #由于我们只需要构建好后的二进制文件即可，因此这里再构建一个空镜像，用以减少镜像体积
 FROM scratch
 
+COPY ./data /data
 COPY ./config /config
 COPY ./log /log
 COPY ./docs /docs
