@@ -24,4 +24,4 @@ level = "debug"
 
 [qrcode]
 imgheight = 128
-filepath = "img/qrcode/"
+filepath = "data/images/qrcode/"
