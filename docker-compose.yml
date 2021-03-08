@@ -1,8 +1,8 @@
 version: "3"
 services:
-  mysql55:
+  mysql56:
     image: "mysql:5.6"
-    container_name: "mysql55"
+    container_name: "mysql56"
     ports:
     - "13306:3306"
     environment:
@@ -23,11 +23,11 @@ services:
 #    创建tinyurl的归档日志数据卷
     volumes:
       - /home/lomogo/docker/project/tinyurl/log:/log
-      - /home/lomogo/docker/project/tinyurl/data:/data
+      - /home/lomogo/docker/project/tinyurl/data/images/qrcode:/data/images/qrcode
     container_name: "tinyurl"
 #    depends_on会定义启动顺序，但是并不是说第一个容器完全启动之后才再启动下一个容器。因此下面需要利用wait-for.sh脚本来确保mysql服务启动之后再启动应用。
     depends_on:
-      - mysql55
+      - mysql56
     ports:
     - "8080:8080"
-    command: bash -c "./wait-for.sh mysql55:3306 -- ./tinyURL"
+    command: bash -c "./wait-for.sh mysql56:3306 -- ./tinyURL"
