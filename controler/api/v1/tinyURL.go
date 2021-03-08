@@ -43,7 +43,7 @@ func Long2ShortURL(c *gin.Context) {
 		global.Logger.Error("短链生成失败", zap.Error(err))
 		return
 	}
-	errCode.Success.WithData("http://" + global.AppConf.URL + global.AppConf.Port + "/" + urlCode).ResponseJson(c)
+	errCode.Success.WithData("http://" + global.AppConf.URL + global.AppConf.Port + "/l/" + urlCode).ResponseJson(c)
 	global.Logger.Info("短链生成成功", zap.String("短链", urlCode))
 }
 
