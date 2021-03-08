@@ -11,8 +11,8 @@ type Database struct {
 }
 
 type App struct {
-	URL  string `mapstructure:"url"`
-	Port string `mapstructure:"port"`
+	Host string `mapstructure:"host"`
+	Port int    `mapstructure:"port"`
 }
 
 type Zap struct {
@@ -27,4 +27,13 @@ type Zap struct {
 type QRCode struct {
 	ImgHeight int    `mapstructure:"imgheight"`
 	FilePath  string `mapstructure:"filepath"`
+}
+
+type Email struct {
+	Timeout int    `mapstructure:"timeout"`
+	From    string `mapstructure:"from"`
+	Port    int    `mapstructure:"port"`
+	Host    string `mapstructure:"host"`
+	ConnNum int    `mapstructure:"connnum"`
+	Secret  string `mapstructure:"secret"`
 }

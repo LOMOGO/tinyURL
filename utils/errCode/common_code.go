@@ -10,6 +10,7 @@ var (
 	ServerError       = newError(10001, "服务器内部错误")
 	GenderURLError    = newError(10002, "短链生成失败")
 	GenderQRCodeError = newError(10003, "二维码生成失败")
+	SendEmailError    = newError(10004, "邮件发送失败")
 
 	//数据库错误的前缀为201
 	DatabaseError = newError(20101, "数据库连接错误")

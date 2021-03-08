@@ -60,6 +60,8 @@ func (e *Error) StatusCode() int {
 		return http.StatusInternalServerError
 	case GenderQRCodeError.Code:
 		return http.StatusInternalServerError
+	case SendEmailError.Code:
+		return http.StatusInternalServerError
 	}
 	return http.StatusInternalServerError
 }

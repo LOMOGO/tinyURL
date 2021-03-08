@@ -30,6 +30,40 @@ var doc = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/email": {
+            "post": {
+                "description": "将生成的二维码和短链接发送到用户邮箱，链接必须以：http://或https://开头。",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "邮件"
+                ],
+                "summary": "发送邮件",
+                "parameters": [
+                    {
+                        "description": "需要转换的网址",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.EmailInfo"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{\"code\": \"0\", \"msg\": \"成功\", \"details\": \"\", data:\"\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/link": {
             "post": {
                 "description": "将用户传入的网址转换为短链接, 链接必须以：http://或https://开头",
@@ -56,7 +90,7 @@ var doc = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "{\"code\": \"0\", \"msg\": \"成功\", \"details\": \"\", data:\"转换后的短链\"}",
+                        "description": "{\"code\": \"0\", \"msg\": \"成功\", \"details\": \"\", data:\"\"}",
                         "schema": {
                             "type": "string"
                         }
@@ -90,7 +124,7 @@ var doc = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "{\"code\": \"0\", \"msg\": \"成功\", \"details\": \"\", data:\"转换后的二维码地址\"}",
+                        "description": "{\"code\": \"0\", \"msg\": \"成功\", \"details\": \"\", data:\"\"}",
                         "schema": {
                             "type": "string"
                         }
@@ -100,6 +134,17 @@ var doc = `{
         }
     },
     "definitions": {
+        "request.EmailInfo": {
+            "type": "object",
+            "properties": {
+                "recipient": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
         "request.URLInfo": {
             "type": "object",
             "properties": {

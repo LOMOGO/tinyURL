@@ -9,16 +9,16 @@ import (
 )
 
 func Logger() {
-	writeSyncer := getLogWriter(global.ZapConf.Filename, global.ZapConf.MaxSize, global.ZapConf.MaxBackups, global.ZapConf.MaxAge, global.ZapConf.Compress)
+	writeSyncer := getLogWriter(global.ZAPCONF.Filename, global.ZAPCONF.MaxSize, global.ZAPCONF.MaxBackups, global.ZAPCONF.MaxAge, global.ZAPCONF.Compress)
 	encoder := getEncoder()
 	var l = new(zapcore.Level)
-	err := l.UnmarshalText([]byte(global.ZapConf.Level))
+	err := l.UnmarshalText([]byte(global.ZAPCONF.Level))
 	if err != nil {
 		log.Fatal("日志库初始化失败", err)
 	}
 	core := zapcore.NewCore(encoder, writeSyncer, l)
 
-	global.Logger = zap.New(core, zap.AddCaller())
+	global.LOGGER = zap.New(core, zap.AddCaller())
 }
 
 func getEncoder() zapcore.Encoder {

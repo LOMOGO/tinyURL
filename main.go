@@ -29,6 +29,7 @@ var aboutMe = `
 func main() {
 	initialize.Config()
 	initialize.Logger()
+	initialize.EmailPool()
 	initialize.DataBase()
 	initialize.Routers()
 	fmt.Println(aboutMe)

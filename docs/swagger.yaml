@@ -1,5 +1,12 @@
 basePath: /api/v1
 definitions:
+  request.EmailInfo:
+    properties:
+      recipient:
+        type: string
+      url:
+        type: string
+    type: object
   request.URLInfo:
     properties:
       url:
@@ -16,6 +23,28 @@ info:
   title: 短链接服务接口文档
   version: 0.0.1
 paths:
+  /email:
+    post:
+      consumes:
+      - application/json
+      description: 将生成的二维码和短链接发送到用户邮箱，链接必须以：http://或https://开头。
+      parameters:
+      - description: 需要转换的网址
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.EmailInfo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code": "0", "msg": "成功", "details": "", data:""}'
+          schema:
+            type: string
+      summary: 发送邮件
+      tags:
+      - 邮件
   /link:
     post:
       consumes:
@@ -32,7 +61,7 @@ paths:
       - application/json
       responses:
         "200":
-          description: '{"code": "0", "msg": "成功", "details": "", data:"转换后的短链"}'
+          description: '{"code": "0", "msg": "成功", "details": "", data:""}'
           schema:
             type: string
       summary: 生成短链
@@ -54,7 +83,7 @@ paths:
       - application/json
       responses:
         "200":
-          description: '{"code": "0", "msg": "成功", "details": "", data:"转换后的二维码地址"}'
+          description: '{"code": "0", "msg": "成功", "details": "", data:""}'
           schema:
             type: string
       summary: 生成二维码
