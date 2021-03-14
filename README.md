@@ -10,7 +10,7 @@ gin框架编写的短链接服务
 运行方法：
 
 ```bash
-第一种（推荐）：
+第一种：
 如果不依赖docker运行本项目，而仅仅是独立运行的话，需要将/config/config.toml中 mysql配置中的host项改为:127.0.0.1。并且需要提前建立数据库:db_tiny_url。
 
 第二种：
@@ -27,6 +27,7 @@ $ docker run --link=mysql8019:mysql8019 -p 8080:8080 tinyurl
 第二条命令意为通过mysql:5.5镜像运行mysql55容器，并且指定了root密码是Syq,并新建了数据库db_tiny_url
 第三条命令的含义是：在运行tinyurl容器的时候使用--link的方式与上面的mysql8019容器关联起来。
 
+（第二种和第三种操作在容器中运行数据库服务是不稳妥的。）
 ```
 
 
