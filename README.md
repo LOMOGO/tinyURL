@@ -27,7 +27,6 @@ $ docker run --link=mysql8019:mysql8019 -p 8080:8080 tinyurl
 第二条命令意为通过mysql:5.5镜像运行mysql55容器，并且指定了root密码是Syq,并新建了数据库db_tiny_url
 第三条命令的含义是：在运行tinyurl容器的时候使用--link的方式与上面的mysql8019容器关联起来。
 
-（第二种和第三种操作在容器中运行数据库服务是不稳妥的。）
 ```
 
 
